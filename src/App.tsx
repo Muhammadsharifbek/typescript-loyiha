@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
@@ -10,6 +10,7 @@ import { IUser } from "./shared/interfaces/user.interface";
 import ProtectRoute from "./guards/ProtectRoute";
 
 function App() {
+  const navigate = useNavigate();
   const [user, setUser] = useState<IUser | null>(null);
 
   const handeLogin = () => {
@@ -20,9 +21,14 @@ function App() {
     setUser(null);
   };
 
+  const handleAboutClick = () => {
+    navigate("/about");
+  };
+
   return (
-    <BrowserRouter>
+    <>
       {user ? <button onClick={handleLogout}>Logout</button> : <button onClick={handeLogin}>Login</button>}
+      <button onClick={handleAboutClick}>Go</button>
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route path="/" element={<Home />} />
@@ -41,7 +47,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 

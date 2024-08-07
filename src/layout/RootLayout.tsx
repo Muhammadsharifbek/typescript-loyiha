@@ -7,7 +7,7 @@ function RootLayout() {
       <nav>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        <Link to="/contacts">Contacts</Link>
+        <Link to="/contacts">Contdact</Link>
         <Link to="/admin">Admin</Link>
         <Link to="/blog/filter=11">Blog</Link>
       </nav>
