@@ -8,6 +8,7 @@ import Blog from "./pages/Blog";
 import Profile from "./pages/Profile";
 import { IUser } from "./shared/interfaces/user.interface";
 import ProtectRoute from "./guards/ProtectRoute";
+import Login from "./pages/Login";
 
 function App() {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<ProtectRoute IsAllowed={Boolean(user?.roles.includes("admin"))} children={undefined} />} />
           <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
           <Route element={<ProtectRoute IsAllowed={Boolean(user)} children={undefined} />}>
             <Route path="/contacts" element={<Contacts />} />
 
